@@ -16,6 +16,9 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag docker-osx:monterey
+
+    - name: Push the Docker image
+      run: echo $CR_PAT | docker login ghcr.io -u xianfeng596 --password-stdin
       
     - name: Push the Docker image
       run: docker push ghcr.io/xianfeng596/docker-osx:monterey
